@@ -3,10 +3,10 @@
 A web dashboard for exploring taxi trip data with interactive filtering, charts, and maps.
 
 ## Team Members
-- Samuel NIYONKURU
-- David NGARAMBE
-- Attorney Valois NIYIGABA
-- Prudence Browns
+- Samuel NIYONKURU  `backend & documentation`
+- David NGARAMBE  `backend`
+- Attorney Valois NIYIGABA  `frontend`
+- Prudence Browns  `frontend & documentation`
 
 ---
 
