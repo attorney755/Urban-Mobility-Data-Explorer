@@ -1,17 +1,20 @@
-# scripts/data_cleaning.py
+# Attorney Valois NIYIGABA: I created this script to clean and preprocess the NYC taxi trip dataset.
+# I focused on removing invalid, missing, or duplicate data, and ensuring all coordinates fall within NYC bounds.
+# I also derived new features and saved both cleaned data and excluded records for transparency.
+
 import pandas as pd
 
-# Load the raw dataset
+# I loaded the raw dataset from the specified path.
 raw_data = pd.read_csv('../data/raw/train.csv')
 
-# Display basic info
+# I printed an overview of the raw data to understand its structure and content.
 print("=== Raw Data Overview ===")
 print("Shape:", raw_data.shape)
 print("Columns:", raw_data.columns.tolist())
 print("\n=== Sample Data ===")
 print(raw_data.head())
 
-# Update critical columns (only those present in your dataset)
+# I defined critical columns that must not have missing values for the analysis.
 critical_columns = [
     'pickup_datetime', 'dropoff_datetime',
     'pickup_longitude', 'pickup_latitude',
@@ -19,25 +22,26 @@ critical_columns = [
     'trip_duration'
 ]
 
-# Drop rows with missing critical fields
+# I removed rows with missing values in critical columns to ensure data quality.
 cleaned_data = raw_data.dropna(subset=critical_columns)
 
-# Remove duplicates
+# I removed duplicate rows to avoid redundancy in the dataset.
 cleaned_data = cleaned_data.drop_duplicates()
 
-# Convert timestamps to datetime
+# I converted timestamp columns to datetime objects for easier manipulation.
 cleaned_data['pickup_datetime'] = pd.to_datetime(cleaned_data['pickup_datetime'])
 cleaned_data['dropoff_datetime'] = pd.to_datetime(cleaned_data['dropoff_datetime'])
 
-# Remove invalid timestamps
+# I removed rows where the dropoff time is before the pickup time, as these are invalid.
 cleaned_data = cleaned_data[cleaned_data['dropoff_datetime'] >= cleaned_data['pickup_datetime']]
 
-# Define NYC bounds and remove invalid coordinates
+# I defined the geographic bounds of New York City to filter out invalid coordinates.
 nyc_bounds = {
     'min_lat': 40.4774, 'max_lat': 40.9176,
     'min_lon': -74.2591, 'max_lon': -73.7004
 }
 
+# I filtered the data to only include coordinates within NYC bounds.
 cleaned_data = cleaned_data[
     (cleaned_data['pickup_latitude'] >= nyc_bounds['min_lat']) &
     (cleaned_data['pickup_latitude'] <= nyc_bounds['max_lat']) &
@@ -49,7 +53,7 @@ cleaned_data = cleaned_data[
     (cleaned_data['dropoff_longitude'] <= nyc_bounds['max_lon'])
 ]
 
-# Round coordinates
+# I rounded coordinate values to 6 decimal places for precision and consistency.
 coordinate_columns = [
     'pickup_longitude', 'pickup_latitude',
     'dropoff_longitude', 'dropoff_latitude'
@@ -57,17 +61,17 @@ coordinate_columns = [
 for col in coordinate_columns:
     cleaned_data[col] = cleaned_data[col].round(6)
 
-# Derived feature: trip_duration_min (already in seconds, convert to minutes)
+# I derived a new feature: trip_duration_min, converting trip duration from seconds to minutes.
 cleaned_data['trip_duration_min'] = cleaned_data['trip_duration'] / 60
 
-# Log excluded records
+# I logged excluded records to a separate file for review and transparency.
 excluded_records = raw_data[~raw_data.index.isin(cleaned_data.index)]
 excluded_records.to_csv('../data/processed/excluded_records.csv', index=False)
 
-# Save cleaned data
+# I saved the cleaned data to a new CSV file for further analysis.
 cleaned_data.to_csv('../data/processed/cleaned_trips.csv', index=False)
 
-# Display cleaned data info
+# I printed an overview of the cleaned data to verify the cleaning process.
 print("\n=== Cleaned Data Overview ===")
 print("Shape:", cleaned_data.shape)
 print("Columns:", cleaned_data.columns.tolist())
