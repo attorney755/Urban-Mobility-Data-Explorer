@@ -1,0 +1,284 @@
+:root {
+  --nyc-yellow: #ffd600;
+  --nyc-black: #222;
+  --nyc-gray: #f5f5f5;
+  --nyc-accent: #ff9800;
+  --nyc-panel: #23272b;
+  --nyc-card: #fffde7;
+  --nyc-shadow: 0 4px 24px rgba(34,34,34,0.12);
+  --nyc-glass: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, var(--nyc-yellow) 0%, var(--nyc-gray) 100%);
+  color: var(--nyc-black);
+  min-height: 100vh;
+}
+
+.nyc-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: var(--nyc-black);
+  color: var(--nyc-yellow);
+  padding: 12px 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  box-shadow: var(--nyc-shadow);
+}
+
+.logo {
+  font-size: 2rem;
+}
+
+.status {
+  font-size: 1rem;
+  color: var(--nyc-accent);
+  margin-left: auto;
+}
+
+.nyc-main.compact {
+  display: flex;
+  gap: 18px;
+  padding: 18px;
+  flex-wrap: wrap;
+}
+
+.nyc-sidebar {
+  background: var(--nyc-panel);
+  border-radius: 14px;
+  padding: 14px;
+  min-width: 220px;
+  max-width: 260px;
+  color: var(--nyc-yellow);
+  box-shadow: var(--nyc-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nyc-sidebar h2 {
+  color: var(--nyc-accent);
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+.filter-group {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filter-group label {
+  font-weight: 500;
+  color: var(--nyc-yellow);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.icon {
+  font-size: 1.1em;
+}
+
+.creative-input {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--nyc-yellow);
+  background: var(--nyc-glass);
+  color: var(--nyc-black);
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(255, 214, 0, 0.07);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.creative-input:focus {
+  border-color: var(--nyc-accent);
+  box-shadow: 0 0 0 2px var(--nyc-yellow);
+}
+
+.filter-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.nyc-btn {
+  background: var(--nyc-accent);
+  color: var(--nyc-black);
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: var(--nyc-shadow);
+  transition: background 0.2s;
+  font-size: 1rem;
+}
+
+.nyc-btn.accent {
+  background: linear-gradient(135deg, var(--nyc-yellow), var(--nyc-accent));
+}
+
+.nyc-btn:hover {
+  background: var(--nyc-yellow);
+}
+
+.nyc-content {
+  flex: 2 1 400px;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.nyc-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.nyc-card {
+  background: var(--nyc-card);
+  border: 2px solid var(--nyc-yellow);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: var(--nyc-shadow);
+  text-align: center;
+  min-width: 100px;
+}
+
+.nyc-metric {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--nyc-accent);
+}
+
+.nyc-label {
+  font-size: 0.95rem;
+  color: var(--nyc-black);
+  margin-top: 6px;
+}
+
+.nyc-panels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.nyc-panel {
+  background: var(--nyc-panel);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: var(--nyc-shadow);
+  color: var(--nyc-yellow);
+  font-size: 0.95rem;
+}
+
+.nyc-panel.wide {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+}
+
+#map {
+  width: 100%;
+  height: 180px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.nyc-table-panel {
+  background: var(--nyc-panel);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: var(--nyc-shadow);
+  color: var(--nyc-yellow);
+  font-size: 0.95rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  background: var(--nyc-card);
+  color: var(--nyc-black);
+  font-size: 0.95rem;
+}
+
+th, td {
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--nyc-yellow);
+  text-align: left;
+}
+
+th {
+  background: var(--nyc-yellow);
+  color: var(--nyc-black);
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+tr:nth-child(even) td {
+  background: #fffde7;
+}
+
+.nyc-pagination {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nyc-footer {
+  text-align: center;
+  color: var(--nyc-black);
+  background: var(--nyc-yellow);
+  padding: 8px 0;
+  font-size: 0.95rem;
+  margin-top: 18px;
+  border-top: 2px solid var(--nyc-black);
+  letter-spacing: 1px;
+}
+
+.nyc-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.nyc-modal-content {
+  background: var(--nyc-card);
+  border-radius: 12px;
+  padding: 18px;
+  min-width: 220px;
+  max-width: 90vw;
+  box-shadow: var(--nyc-shadow);
+  position: relative;
+}
+
+.nyc-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 1.5rem;
+  color: var(--nyc-accent);
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .nyc-main.compact { flex-direction: column; gap: 10px; padding: 8px; }
+  .nyc-panels { grid-template-columns: 1fr; }
+  .nyc-cards { grid-template-columns: 1fr; }
+  #map { height: 120px; }
+}
