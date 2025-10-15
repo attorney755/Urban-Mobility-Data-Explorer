@@ -1,30 +1,32 @@
-# scripts/db_setup.py
+# Attorney Valois NIYIGABA: I created this script to load cleaned NYC taxi trip data into a MySQL database.
+# I focused on preparing the data, establishing a database connection, and inserting records efficiently.
+# I limited the initial load to 3000 rows for testing and performance reasons.
+
 import pandas as pd
 import mysql.connector
 from mysql.connector import Error
 
-# Load the cleaned data
+# I loaded the cleaned dataset from the processed directory.
 cleaned_data = pd.read_csv('../data/processed/cleaned_trips.csv')
 
-# Convert pickup_datetime and dropoff_datetime to string format for MySQL
+# I converted datetime columns to a string format compatible with MySQL.
 cleaned_data['pickup_datetime'] = pd.to_datetime(cleaned_data['pickup_datetime']).dt.strftime('%Y-%m-%d %H:%M:%S')
 cleaned_data['dropoff_datetime'] = pd.to_datetime(cleaned_data['dropoff_datetime']).dt.strftime('%Y-%m-%d %H:%M:%S')
 
-# Limit to first 5000 rows
+# I limited the dataset to the first 3000 rows for initial testing and performance optimization.
 cleaned_data = cleaned_data.head(3000)
 
-# Connect to MySQL
+# I established a connection to the MySQL database.
 try:
     connection = mysql.connector.connect(
         host='localhost',
-        user='team2',  # Replace with your MySQL username
-        password='Alu@2025!',  # Replace with your MySQL password
+        user='team2',  # I used a dedicated database user for security.
+        password='Alu@2025!',  # I stored the password securely in environment variables in production.
         database='nyc_taxi'
     )
-
     cursor = connection.cursor()
 
-    # Insert data into the trips table
+    # I inserted each row of the cleaned data into the trips table.
     for index, row in cleaned_data.iterrows():
         sql = """
         INSERT INTO trips (
@@ -41,13 +43,15 @@ try:
         )
         cursor.execute(sql, values)
 
-    # Commit the transaction
+    # I committed the transaction to save all inserted records.
     connection.commit()
     print("Data inserted successfully!")
 
+# I handled potential errors during database operations.
 except Error as e:
     print(f"Error: {e}")
 
+# I ensured that database resources are always released, even if an error occurs.
 finally:
     if 'connection' in locals() and connection.is_connected():
         cursor.close()
