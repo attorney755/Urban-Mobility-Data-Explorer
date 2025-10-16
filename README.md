@@ -186,10 +186,7 @@ gunicorn --bind 0.0.0.0:8000 app:app
 ---
 
 ### 7) Run the Frontend
-The frontend lives in `frontend/`. For local development, serve files with Python's simple server:
-```bash
-cd frontend
-python -m http.server 8000
+The frontend lives in `frontend/`
 ```
 Open `http://localhost:8000` in your browser.
 
