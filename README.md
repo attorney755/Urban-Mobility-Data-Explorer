@@ -188,7 +188,7 @@ gunicorn --bind 0.0.0.0:8000 app:app
 ### 7) Run the Frontend
 The frontend lives in `frontend/`. Open Browser and run:
 ```
- `http://localhost:8000`
+ http://localhost:8000
 ```
 
 ## Troubleshooting
