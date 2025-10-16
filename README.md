@@ -186,11 +186,14 @@ gunicorn --bind 0.0.0.0:8000 app:app
 ---
 
 ### 7) Run the Frontend
-The frontend lives in `frontend/`. Open Browser and run:
-```
- http://localhost:8000
-```
 
+The frontend lives in frontend/. For local development, serve files with Python's simple server:
+
+```
+cd frontend
+python -m http.server 8000
+```
+Open http://localhost:8000 in your browser.
 ## Troubleshooting
 - **MySQL connection errors**: Ensure MySQL is running and the credentials in `.env` match the user and password you created.
 - **`mysql-connector-python` install issues**: This driver is pure Python and should install via pip. If you see SSL or connection issues, check your MySQL server configuration.
