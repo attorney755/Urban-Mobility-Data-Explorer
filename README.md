@@ -22,17 +22,20 @@ nyc-taxi-dashboard/
 │   └── ...
 ├── frontend/
 │   ├── index.html            # Frontend HTML
+│   ├── style.css             # Frontend CSS
 │   ├── app.js                # Frontend JavaScript
 │   └── ...
 ├── data/
 │   ├── raw/                  # Place `train.csv` here
 │   ├── processed/            # Place `cleaned_trips.csv` here
-│   ├── links/                # Google Drive links for datasets
 │   ├── schema.sql            # Database schema
 │   └── data_dump.sql         # Database data dump
 ├── scripts/
-│   └── data_cleaning.py      # Data cleaning script
+│   ├── data_cleaning.py      # Data cleaning script
+│   ├── db_setup.py           # Database setup script
+│   └── update_data_cleaning.py # Updated data cleaning script
 └── README.md                 # This file
+
 ```
 
 ---
