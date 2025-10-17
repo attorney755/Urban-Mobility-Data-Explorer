@@ -37,6 +37,9 @@ nyc-taxi-dashboard/
 └── README.md                 # This file
 
 ```
+## Video walkthrough
+Find our Video walkthrough  [here!](https://drive.google.com/file/d/1jwziuHUPCrN3FpP49uB3gHPlJEfGMWjn/view?usp=drive_link)
+, where we we take you through our system overview, architecture design choices and future improvements.
 
 ---
 
