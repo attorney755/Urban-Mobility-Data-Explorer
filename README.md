@@ -6,10 +6,10 @@ A web dashboard for exploring taxi trip data with interactive filtering, charts,
 ---
 
 ## Team Members
-- Samuel NIYONKURU  `backend & documentation`
-- David NGARAMBE  `backend`
-- Attorney Valois NIYIGABA  `frontend`
-- Prudence Browns  `frontend & documentation`
+- Samuel NIYONKURU  `frontend`
+- David NGARAMBE  `Documentation`
+- Attorney Valois NIYIGABA  `backend`
+- Prudence Browns  `README & Video`
 
 ---
 
@@ -181,11 +181,6 @@ cd backend
 # activate venv if not already active
 python app.py
 ```
-The API should be available at `http://localhost:5000` by default. For production, you can run with Gunicorn:
-```bash
-gunicorn --bind 0.0.0.0:8000 app:app
-```
-
 ---
 
 ### 7) Run the Frontend
