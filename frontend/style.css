@@ -28,6 +28,7 @@ body {
 .nyc-header {
   display: flex;
   align-items: center;
+  border-radius: 30px;
   gap: 18px;
   background: var(--nyc-black);
   color: var(--nyc-yellow);
@@ -35,7 +36,7 @@ body {
   font-size: 1.5rem;
   font-weight: bold;
   letter-spacing: 2px;
-  box-shadow: var(--nyc-shadow);
+  box-shadow: 5px 5px 5px #222;
   /* I added a shadow for depth and used NYC colors for branding. */
 }
 
@@ -64,7 +65,7 @@ body {
   min-width: 220px;
   max-width: 260px;
   color: var(--nyc-yellow);
-  box-shadow: var(--nyc-shadow);
+  box-shadow: 5px 5px 5px #222;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -130,8 +131,8 @@ body {
   padding: 8px 16px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: var(--nyc-shadow);
-  transition: background 0.2s;
+  box-shadow: 5px 5px 5px #a78b02;
+  transition: background 0.5s;
   font-size: 1rem;
   /* I styled buttons with rounded corners and a shadow for a 3D effect. */
 }
